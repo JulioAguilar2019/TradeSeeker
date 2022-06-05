@@ -70,10 +70,10 @@ public class ListWorkerAdapter extends RecyclerView.Adapter<ListWorkerAdapter.Vi
         }
 
         void bindData(final ListWorker item){
-            name.setText(item.getNombre());
-            info.setText(item.getProfesion() + " - " + item.getDepartamento());
-            money.setText(item.getPrecio());
-            date.setText("Hace 5 dias");
+            name.setText(item.worker.getName());
+            info.setText(item.getWork().getProfession() + " - " + item.getWork().getState().getName());
+            money.setText(item.getWork().getPrice());
+            date.setText("5 dias atras");
         }
     }
 }

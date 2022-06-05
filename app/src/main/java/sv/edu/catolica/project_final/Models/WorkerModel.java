@@ -1,8 +1,9 @@
 package sv.edu.catolica.project_final.Models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class WorkerModel {
+public class WorkerModel implements Serializable {
     private int id;
     private String name;
     private String email;

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.gson.Gson;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -61,6 +62,7 @@ public class Login extends AppCompatActivity {
                         SharedPreferences sharedPref = getBaseContext().getSharedPreferences("myPreferences", getBaseContext().MODE_PRIVATE);
 
                         SharedPreferences.Editor editor = sharedPref.edit();
+                        Gson gson = new Gson();
 
                         String token = response.body().getToken();
 
@@ -68,6 +70,9 @@ public class Login extends AppCompatActivity {
 
                         editor.putString("token", token);
                         editor.putInt("user_id", response.body().getUser().getId());
+
+                        String json = gson.toJson(response.body().getUser());
+                        editor.putString("user", json);
                         editor.apply();
 
                         Intent myIntent = new Intent(getBaseContext(), MainActivity.class);

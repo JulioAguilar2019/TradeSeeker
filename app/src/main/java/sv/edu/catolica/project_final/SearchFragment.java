@@ -121,7 +121,7 @@ public class SearchFragment extends Fragment {
                 listWorkers = new ArrayList<>();
 
                 for (WorkModel work: workModels){
-                    listWorkers.add(new ListWorker(work.getWorker().getName(), work.getProfession(), work.getState().getName(), work.getCategory().getName(), work.getLevel(), work.getSchedule(), work.getCreatedAt(), work.getPrice()));
+                    listWorkers.add(new ListWorker(work, work.getWorker()));
                 }
 
                 ListWorkerAdapter listWorkerAdapter = new ListWorkerAdapter(listWorkers, root.getContext());
@@ -133,10 +133,8 @@ public class SearchFragment extends Fragment {
                 listWorkerAdapter.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getContext(), "Seleccionaste: "+listWorkers.get(recyclerView.getChildAdapterPosition(view)).getNombre(), Toast.LENGTH_SHORT).show();
-
                         Intent myIntent = new Intent(getContext(), ProfileWorker.class);
-                        myIntent.putExtra("worker", (Serializable) listWorkers.get(recyclerView.getChildAdapterPosition(view)));
+                        myIntent.putExtra("listwork", (Serializable) listWorkers.get(recyclerView.getChildAdapterPosition(view)));
                         startActivity(myIntent);
                     }
                 });

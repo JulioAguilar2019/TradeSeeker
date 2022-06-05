@@ -1,8 +1,9 @@
 package sv.edu.catolica.project_final.Models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CategoryModel {
+public class CategoryModel implements Serializable {
     private int id;
     private String name;
     private Date createdAt;

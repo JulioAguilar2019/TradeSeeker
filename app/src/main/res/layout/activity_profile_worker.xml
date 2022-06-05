@@ -93,6 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
+                android:id="@+id/profile_description"
                 android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"/>
 
@@ -121,6 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="$20"
+                    android:id="@+id/profile_price"
                     android:textAppearance="?attr/textAppearanceBody2"
                     android:textColor="@color/lightTextColor"/>
             </LinearLayout>
@@ -137,6 +139,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:text="https://chat.whatsapp.com/KjKf"
+                android:id="@+id/profile_phone"
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"/>
 
             <TextView
@@ -151,6 +154,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:text="Construccion"
+                android:id="@+id/profile_category"
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"/>
 
             <LinearLayout
