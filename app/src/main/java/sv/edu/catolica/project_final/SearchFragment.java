@@ -1,11 +1,14 @@
 package sv.edu.catolica.project_final;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -13,6 +16,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.android.material.progressindicator.CircularProgressIndicator;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import sv.edu.catolica.project_final.Interfaces.TradesSeekerApi;
+import sv.edu.catolica.project_final.Models.WorkModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,10 +42,13 @@ public class SearchFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    View root;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    List<ListWorker> listWorkers;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -66,8 +86,62 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        root = inflater.inflate(R.layout.fragment_search, container, false);
+
+        getApiData(root);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        return root;
+    }
+
+    public void getApiData(View root) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://trades-seeker.herokuapp.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        TradesSeekerApi tradesSeekerApi = retrofit.create(TradesSeekerApi.class);
+
+        Call<List<WorkModel>> call = tradesSeekerApi.getWorks();
+
+        CircularProgressIndicator loading = root.findViewById(R.id.loading);
+
+        call.enqueue(new Callback<List<WorkModel>>() {
+            @Override
+            public void onResponse(Call<List<WorkModel>> call, Response<List<WorkModel>> response) {
+                if (!response.isSuccessful()){
+                    System.out.println("Error codigo: "+response.code());
+                    return;
+                }
+
+                TextView txtresponse = root.findViewById(R.id.txtResponse);
+
+                List<WorkModel> workModels = response.body();
+
+                listWorkers = new ArrayList<>();
+
+                for (WorkModel work: workModels){
+                    listWorkers.add(new ListWorker(work.getWorker().getName(), work.getProfession(), work.getState().getName(), work.getCategory().getName(), work.getLevel(), work.getSchedule(), work.getCreatedAt(), work.getPrice()));
+                }
+
+                ListWorkerAdapter listWorkerAdapter = new ListWorkerAdapter(listWorkers, root.getContext());
+                RecyclerView recyclerView = root.findViewById(R.id.listRecyclerView);
+                recyclerView.setHasFixedSize(true);
+                recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
+                recyclerView.setAdapter(listWorkerAdapter);
+
+                loading.hide();
+            }
+
+            @Override
+            public void onFailure(Call<List<WorkModel>> call, Throwable t) {
+                System.out.println("Error codigo: "+t.getMessage());
+                TextView txtresponse = root.findViewById(R.id.txtResponse);
+                txtresponse.setText(t.getMessage());
+
+                loading.hide();
+                return;
+            }
+        });
     }
 
 

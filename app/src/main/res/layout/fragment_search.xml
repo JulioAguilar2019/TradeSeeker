@@ -97,6 +97,7 @@
             </LinearLayout>
 
 
+<<<<<<< HEAD
 
 
         <HorizontalScrollView
@@ -338,6 +339,24 @@
 
 
         </HorizontalScrollView>
+=======
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtResponse"/>
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:id="@+id/loading"
+            android:layout_gravity="center_horizontal"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+>>>>>>> e80ca7c2af09965eb81f3473e3716b9dc5f32d44
 
     </LinearLayout>
 
