@@ -15,13 +15,7 @@
 
         >
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardElevation="10dp"
-            android:layout_marginBottom="20dp"
-            >
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -39,21 +33,6 @@
                     android:background="@drawable/radius"
 
                     >
-
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/floating_action_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:contentDescription="Volver"
-
-                        app:srcCompat="@drawable/ic_back"
-                        app:backgroundTint="@color/white"
-
-                        app:elevation="0dp"
-                        >
-
-                    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textField1"
@@ -117,132 +96,248 @@
 
             </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
 
 
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card"
+        <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            app:cardElevation="10dp"
-            >
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-
-                >
-
-
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                android:orientation="horizontal">
+                <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:src="@drawable/profile2"
-                        android:layout_height="100dp"
-                        android:layout_width="100dp"
-
-                        ></ImageView>
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/cv2"
+                    android:animateLayoutChanges="true"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="6dp"
+                    android:layout_margin="8dp"
+                    app:cardUseCompatPadding="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="5dp"
+                        android:orientation="vertical">
 
-                        <!-- Title, secondary and supporting text -->
-                        <TextView
-                            android:id="@+id/nombre"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Nombre"
-                            android:textAppearance="?attr/textAppearanceHeadline6"
-                            />
-                        <TextView
-                            android:id="@+id/info"
-                            android:layout_width="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="14dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                xmlns:app="http://schemas.android.com/apk/res-auto"
+                                android:id="@+id/profile_image"
+                                android:layout_width="46dp"
+                                android:layout_height="46dp"
+                                android:src="@drawable/profile2"
+                                android:elevation="2dp"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginLeft="10dp"
+                                >
+                                <TextView
+                                    android:id="@+id/nombre"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Nombre"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    android:textColor="@color/primaryColor"
+
+                                    />
+                                <TextView
+                                    android:id="@+id/information"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="freelancer - Santa Ana"
+                                    android:textAppearance="?attr/textAppearanceBody2"
+                                    android:textColor="@color/lightTextColor"
+                                    />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"/>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/ic_bookmark"
+                                android:layout_gravity="right"
+                                android:onClick="SaveJob"
+                                />
+
+                        </LinearLayout>
+
+
+                        h
+                        <!-- Buttons -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="freelancer - Santa Ana"
-                            android:textAppearance="?attr/textAppearanceBody2"
-                            android:textColor="?android:attr/textColorSecondary"
-                            />
 
+                            android:orientation="horizontal"
 
+                            >
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chip"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp"
+                                android:textColor="@color/lightTextColor"
+                                app:chipBackgroundColor="#f9f9fa"
+                                android:text="5 años"/>
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chip21"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp"
+                                android:textColor="@color/lightTextColor"
+                                app:chipBackgroundColor="#f9f9fa"
+                                android:text="Tiempo completo"/>
+                            <Button
+                                android:id="@+id/btnApply"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:text="Aplicar"
+                                android:textColor="#130160"
+                                style="?attr/materialButtonOutlinedStyle"></Button>
+                        </LinearLayout>
                     </LinearLayout>
 
+                </com.google.android.material.card.MaterialCardView>
 
-                </LinearLayout>
-
-                <!-- Buttons -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/cv23"
+                    android:animateLayoutChanges="true"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="6dp"
                     android:layout_margin="8dp"
-                    android:orientation="horizontal">
+                    app:cardUseCompatPadding="true">
 
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
-                        android:text="NodeJs"/>
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="5dp"
+                        android:orientation="vertical">
 
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
-                        android:text="Senior"/>
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
-                        android:text="Tiempo completo"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:orientation="horizontal"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="14dp">
 
-                    >
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                xmlns:app="http://schemas.android.com/apk/res-auto"
+                                android:id="@+id/profile_image2"
+                                android:layout_width="46dp"
+                                android:layout_height="46dp"
+                                android:src="@drawable/profile2"
+                                android:elevation="2dp"
+                                />
 
-                    <TextView
-                        android:id="@+id/date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Hace 3 dias"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary"
-                        android:layout_marginRight="200dp"
-                        />
-                    <TextView
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                >
+                                <TextView
+                                    android:id="@+id/nombre2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Nombre"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    android:textColor="@color/primaryColor"
+                                    />
+                                <TextView
+                                    android:id="@+id/information2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="freelancer - Santa Ana"
+                                    android:textAppearance="?attr/textAppearanceBody2"
+                                    android:textColor="@color/lightTextColor"
+                                    />
 
-                        android:id="@+id/money"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="$1000"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary"
+                            </LinearLayout>
 
-                        />
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"/>
 
-                </LinearLayout>
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/ic_bookmark"
+                                android:layout_gravity="right"/>
+
+                        </LinearLayout>
+
+
+
+                        <!-- Buttons -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:orientation="horizontal"
+
+                            >
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chip2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp"
+                                android:textColor="@color/lightTextColor"
+                                app:chipBackgroundColor="#f9f9fa"
+                                android:text="5 años"/>
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chip23"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp"
+                                android:textColor="@color/lightTextColor"
+                                app:chipBackgroundColor="#f9f9fa"
+                                android:text="Tiempo completo"/>
+                            <Button
+                                android:id="@+id/btnApply2"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:text="Aplicar"
+                                android:textColor="#130160"
+                                style="?attr/materialButtonOutlinedStyle"></Button>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
 
             </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+
+        </HorizontalScrollView>
 
     </LinearLayout>
 

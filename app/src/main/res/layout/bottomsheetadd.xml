@@ -41,6 +41,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="20dp"
+            android:backgroundTint="#130160"
             >
 
         </Button>
@@ -49,10 +50,11 @@
             android:id="@+id/btnBuscar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Crear trabajo"
+            android:text="Ofrecer servicios"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
+            android:backgroundTint="#D6CDFE"
             >
 
         </Button>
