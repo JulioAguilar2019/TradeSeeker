@@ -4,7 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    tools:context=".ProfileWorker">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180sp"
+        android:background="@drawable/background_profile"
+        android:scaleType="fitXY"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="20dp">
+
+        <Button
+            style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#66ffffff"
+            android:onClick="onPop"
+            app:cornerRadius="50dp"
+            app:icon="@drawable/ic_back" />
+
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -13,88 +34,60 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingVertical="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="20dp">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:maxHeight="27dp"
-                    android:src="@mipmap/ic_launcher" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Albañil"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-                    android:textFontWeight="700"
-                    android:layout_marginVertical="10dp"/>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/profile_image"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:src="@drawable/profile"
+                    android:layout_gravity="center_vertical"
+                    android:elevation="2dp"
+                    />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginVertical="20dp"
-                    >
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="20dp">
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Independiente"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"/>
+                        android:text="Nombre"
+                        android:id="@+id/profile_name"
+                        android:textAppearance="?attr/textAppearanceHeadline6"
+                        android:textColor="@color/primaryColor"
+                        android:layout_marginVertical="10dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Santa Ana"
+                        android:id="@+id/profile_localtion"
                         android:layout_weight="1"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Hace 1 dia"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <Button
-                        android:id="@+id/btnDescription"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Descripción"
-                        android:layout_weight="1"
-                        android:layout_marginHorizontal="10dp"/>
-                    <Button
-                        android:id="@+id/btnContact"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Contacto"
-                        android:layout_weight="1"
-                        android:layout_marginHorizontal="10dp"/>
                 </LinearLayout>
 
             </LinearLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:text="Información"
-                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"/>
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -102,6 +95,35 @@
                 android:layout_margin="20dp"
                 android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#f9f9fa"
+                android:padding="15dp"
+                android:layout_marginHorizontal="20dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Freelance"
+                    android:id="@+id/profile_profession"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="@color/lightTextColor"
+                    android:textFontWeight="700"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$20"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="@color/lightTextColor"/>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"

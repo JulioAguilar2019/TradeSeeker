@@ -13,8 +13,9 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class ListWorkerAdapter extends RecyclerView.Adapter<ListWorkerAdapter.ViewHolder> {
+public class ListWorkerAdapter extends RecyclerView.Adapter<ListWorkerAdapter.ViewHolder> implements View.OnClickListener {
     private List<ListWorker> workers;
+    private View.OnClickListener clickListener;
     private LayoutInflater mInflater;
     private Context context;
 
@@ -30,6 +31,9 @@ public class ListWorkerAdapter extends RecyclerView.Adapter<ListWorkerAdapter.Vi
     @Override
     public  ListWorkerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View view = mInflater.inflate(R.layout.list_element, null);
+
+        view.setOnClickListener(this);
+
         return new ListWorkerAdapter.ViewHolder(view);
     }
 
@@ -39,6 +43,17 @@ public class ListWorkerAdapter extends RecyclerView.Adapter<ListWorkerAdapter.Vi
     }
 
     public void setItems(List<ListWorker> items) { workers = items; }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        this.clickListener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (clickListener != null){
+            clickListener.onClick(view);
+        }
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView iconImage;

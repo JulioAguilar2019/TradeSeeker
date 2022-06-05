@@ -2,6 +2,7 @@ package sv.edu.catolica.project_final;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -17,9 +18,11 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -122,9 +125,22 @@ public class SearchFragment extends Fragment {
                 }
 
                 ListWorkerAdapter listWorkerAdapter = new ListWorkerAdapter(listWorkers, root.getContext());
+
                 RecyclerView recyclerView = root.findViewById(R.id.listRecyclerView);
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
+
+                listWorkerAdapter.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getContext(), "Seleccionaste: "+listWorkers.get(recyclerView.getChildAdapterPosition(view)).getNombre(), Toast.LENGTH_SHORT).show();
+
+                        Intent myIntent = new Intent(getContext(), ProfileWorker.class);
+                        myIntent.putExtra("worker", (Serializable) listWorkers.get(recyclerView.getChildAdapterPosition(view)));
+                        startActivity(myIntent);
+                    }
+                });
+
                 recyclerView.setAdapter(listWorkerAdapter);
 
                 loading.hide();

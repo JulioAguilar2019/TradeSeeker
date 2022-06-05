@@ -1,8 +1,9 @@
 package sv.edu.catolica.project_final;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ListWorker {
+public class ListWorker implements Serializable {
     public String nombre;
     public String profesion;
     public String departamento;
