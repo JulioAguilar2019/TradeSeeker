@@ -113,8 +113,6 @@ public class SearchFragment extends Fragment {
                     return;
                 }
 
-                TextView txtresponse = root.findViewById(R.id.txtResponse);
-
                 List<WorkModel> workModels = response.body();
 
                 listWorkers = new ArrayList<>();
@@ -135,9 +133,6 @@ public class SearchFragment extends Fragment {
             @Override
             public void onFailure(Call<List<WorkModel>> call, Throwable t) {
                 System.out.println("Error codigo: "+t.getMessage());
-                TextView txtresponse = root.findViewById(R.id.txtResponse);
-                txtresponse.setText(t.getMessage());
-
                 loading.hide();
                 return;
             }
