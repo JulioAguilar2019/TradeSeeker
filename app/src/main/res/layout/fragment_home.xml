@@ -30,7 +30,7 @@
                 android:gravity="left"
                 android:id="@+id/home_user_name"
                 android:textColor="@color/black">
-                m
+
             </TextView>
 
             <de.hdodenhof.circleimageview.CircleImageView

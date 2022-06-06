@@ -81,7 +81,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-         root = inflater.inflate(R.layout.fragment_profile, container, false);
+        root = inflater.inflate(R.layout.fragment_profile, container, false);
         textDate = root.findViewById(R.id.BornDate);
 
         autoCompleteDepartamento = root.findViewById(R.id.list_department);
