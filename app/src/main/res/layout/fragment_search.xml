@@ -97,7 +97,7 @@
             </LinearLayout>
 
 
-<<<<<<< HEAD
+
 
 
         <HorizontalScrollView
@@ -184,7 +184,7 @@
                         </LinearLayout>
 
 
-                        h
+
                         <!-- Buttons -->
                         <LinearLayout
                             android:layout_width="match_parent"
