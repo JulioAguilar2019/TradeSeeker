@@ -1,8 +1,9 @@
 package sv.edu.catolica.project_final.Models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class StateModel {
+public class StateModel implements Serializable {
     private int id;
     private String name;
     private Date createdAt;

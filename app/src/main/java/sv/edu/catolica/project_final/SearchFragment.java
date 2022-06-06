@@ -2,6 +2,7 @@ package sv.edu.catolica.project_final;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -17,9 +18,11 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -113,20 +116,29 @@ public class SearchFragment extends Fragment {
                     return;
                 }
 
-                TextView txtresponse = root.findViewById(R.id.txtResponse);
-
                 List<WorkModel> workModels = response.body();
 
                 listWorkers = new ArrayList<>();
 
                 for (WorkModel work: workModels){
-                    listWorkers.add(new ListWorker(work.getWorker().getName(), work.getProfession(), work.getState().getName(), work.getCategory().getName(), work.getLevel(), work.getSchedule(), work.getCreatedAt(), work.getPrice()));
+                    listWorkers.add(new ListWorker(work, work.getWorker()));
                 }
 
                 ListWorkerAdapter listWorkerAdapter = new ListWorkerAdapter(listWorkers, root.getContext());
+
                 RecyclerView recyclerView = root.findViewById(R.id.listRecyclerView);
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
+
+                listWorkerAdapter.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent myIntent = new Intent(getContext(), ProfileWorker.class);
+                        myIntent.putExtra("listwork", (Serializable) listWorkers.get(recyclerView.getChildAdapterPosition(view)));
+                        startActivity(myIntent);
+                    }
+                });
+
                 recyclerView.setAdapter(listWorkerAdapter);
 
                 loading.hide();
@@ -135,9 +147,6 @@ public class SearchFragment extends Fragment {
             @Override
             public void onFailure(Call<List<WorkModel>> call, Throwable t) {
                 System.out.println("Error codigo: "+t.getMessage());
-                TextView txtresponse = root.findViewById(R.id.txtResponse);
-                txtresponse.setText(t.getMessage());
-
                 loading.hide();
                 return;
             }

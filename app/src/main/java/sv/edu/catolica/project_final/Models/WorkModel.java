@@ -1,8 +1,9 @@
 package sv.edu.catolica.project_final.Models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class WorkModel {
+public class WorkModel implements Serializable {
     private int id;
     private int worker_id;
     private int customer_id;

@@ -14,17 +14,10 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.textfield.TextInputEditText;
 
 import sv.edu.catolica.project_final.databinding.ActivityMainBinding;
 
@@ -32,14 +25,11 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     FloatingActionButton btnAgregar;
-     TextInputEditText textDate;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         btnAgregar = findViewById(R.id.fab);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -75,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void showDialogAdd() {
+    private void showDialog() {
 
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -114,12 +104,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void agregar(View view) {
-        showDialogAdd();
+        showDialog();
         //replaceFragment(new AddFragment());
     }
-
-    public void logout(View view) {
-        Toast.makeText(this, "Cerrar sesión", Toast.LENGTH_LONG).show();
-    }
-
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Login"
     android:orientation="vertical"
    >
 
@@ -45,9 +45,10 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/correo"
+            android:id="@+id/txtLoginEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="sblanda@example.net"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -64,9 +65,10 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         >
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password"
+            android:id="@+id/txtLoginPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="password"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -108,7 +110,7 @@
         android:gravity="center"
         android:layout_marginHorizontal="100dp"
         android:layout_marginVertical="20dp"
-        android:onClick="ingresar"
+        android:onClick="onLogin"
         />
 
     <LinearLayout
