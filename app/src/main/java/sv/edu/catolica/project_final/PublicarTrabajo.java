@@ -118,7 +118,7 @@ public class PublicarTrabajo extends AppCompatActivity {
     public void createWork(View view) {
         TradesSeekerApi tradesSeekerApi = retrofit.create(TradesSeekerApi.class);
 
-        TextInputEditText profession = findViewById(R.id.profession);
+        TextInputEditText profession = findViewById(R.id.work_profession);
         AutoCompleteTextView cat = findViewById(R.id.list_categoria);
         AutoCompleteTextView location = findViewById(R.id.list_department);
         TextInputEditText exp = findViewById(R.id.exp);
