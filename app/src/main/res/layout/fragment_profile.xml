@@ -30,7 +30,7 @@
                     android:id="@+id/profile_image"
                     android:layout_width="46dp"
                     android:layout_height="46dp"
-                    android:src="@drawable/profile2"
+                    android:src="@drawable/profile"
                     android:elevation="2dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="40dp"
@@ -54,10 +54,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/nombre"
+                    android:id="@+id/setting_nombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nombre"
+                    android:text="@string/nombre"
                     android:textAppearance="?attr/textAppearanceHeadline5"
                     android:textColor="@color/white"
                     android:layout_marginLeft="30dp"
@@ -65,7 +65,7 @@
 
                     />
                 <TextView
-                    android:id="@+id/tvUbicacion"
+                    android:id="@+id/setting_Ubicacion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Santa Ana, El Salvador"
@@ -116,7 +116,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     >
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/name"
+                        android:id="@+id/setting_txtname"
                         android:inputType="textPersonName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     >
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/BornDate"
+                        android:id="@+id/setting_BornDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="date"
@@ -177,7 +177,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     >
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/email"
+                        android:id="@+id/setting_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress"
@@ -197,7 +197,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     >
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/phone"
+                        android:id="@+id/setting_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"

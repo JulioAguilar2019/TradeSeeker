@@ -6,215 +6,221 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="10dp"
-            >
-
-
-            <TextView
-                android:layout_margin="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Bienvenido de vuelta \n*nombre*"
-                android:textSize="22sp"
-                android:gravity="left"
-                android:id="@+id/home_user_name"
-                android:textColor="@color/black">
-
-            </TextView>
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/profileImg"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/profile"
-                android:elevation="2dp"
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center_vertical"
-                />
-        </LinearLayout>
-        <TextView
-            android:layout_margin="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="¡Encuentra a quien necesitas!"
-            android:textSize="25sp"
-            android:textColor="@color/black"
-            android:textAlignment="center"
-            android:textStyle="bold"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
             >
-        </TextView>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="8dp"
-            android:layout_gravity="center_horizontal">
-
-
-
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_margin="10dp"
                 >
 
-                <!-- Media -->
+
+                <TextView
+                    android:layout_margin="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bienvenido de vuelta \n*nombre*"
+                    android:textSize="22sp"
+                    android:gravity="left"
+                    android:id="@+id/home_user_name"
+                    android:textColor="@color/black">
+
+                </TextView>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/profileImg"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/profile"
+                    android:elevation="2dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    />
+            </LinearLayout>
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="¡Encuentra a quien necesitas!"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                >
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="8dp"
+                android:layout_gravity="center_horizontal">
+
+
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:background="#AFECFE"
-
+                    android:orientation="horizontal"
                     >
 
-                    <!-- Title, secondary and supporting text -->
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/img"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginRight="40dp"
-                        android:layout_marginLeft="40dp"
-                        android:layout_marginBottom="20dp"
-                        android:layout_gravity="center"
-                        ></ImageView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="44.5k"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        android:id="@+id/home_count1"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Santa Ana"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="20dp"
-                        android:id="@+id/home_name1"
-                        />
+                    <!-- Media -->
 
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="0dp"
-                    >
 
                     <LinearLayout
-                        android:layout_width="150dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:background="#BEAFFE"
-                        android:layout_weight="0.5"
+                        android:padding="16dp"
+                        android:background="#AFECFE"
 
                         >
 
+                        <!-- Title, secondary and supporting text -->
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/img"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginRight="40dp"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_gravity="center"
+                            ></ImageView>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="66.8k"
+                            android:text="44.5k"
                             android:textAppearance="?attr/textAppearanceBody2"
                             android:textColor="?android:attr/textColorSecondary"
                             android:layout_gravity="center"
                             android:textStyle="bold"
-                            android:layout_marginTop="20dp"
-                            android:id="@+id/home_count2"
+                            android:id="@+id/home_count1"
                             />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="San Salvador"
+                            android:text="Santa Ana"
                             android:textAppearance="?attr/textAppearanceBody2"
                             android:textColor="?android:attr/textColorSecondary"
                             android:layout_gravity="center"
-                            android:id="@+id/home_name2"
-
-
+                            android:layout_marginBottom="20dp"
+                            android:id="@+id/home_name1"
                             />
-                    </LinearLayout>
 
+
+
+                    </LinearLayout>
                     <LinearLayout
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:layout_marginTop="0dp"
-                        android:background="#FFD6AD"
-                        android:layout_weight="0.5"
+                        android:layout_marginLeft="0dp"
                         >
 
-                        <TextView
-                            android:layout_marginTop="20dp"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="150dp"
                             android:layout_height="wrap_content"
-                            android:text="38.9k"
-                            android:textAppearance="?attr/textAppearanceBody2"
-                            android:textColor="?android:attr/textColorSecondary"
-                            android:layout_gravity="center"
-                            android:textStyle="bold"
-                            android:id="@+id/home_count3"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="San Miguel"
-                            android:textAppearance="?attr/textAppearanceBody2"
-                            android:textColor="?android:attr/textColorSecondary"
-                            android:layout_gravity="center"
-                            android:id="@+id/home_name3"
+                            android:orientation="vertical"
+                            android:background="#BEAFFE"
+                            android:layout_weight="0.5"
 
-                            />
+                            >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="66.8k"
+                                android:textAppearance="?attr/textAppearanceBody2"
+                                android:textColor="?android:attr/textColorSecondary"
+                                android:layout_gravity="center"
+                                android:textStyle="bold"
+                                android:layout_marginTop="20dp"
+                                android:id="@+id/home_count2"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="San Salvador"
+                                android:textAppearance="?attr/textAppearanceBody2"
+                                android:textColor="?android:attr/textColorSecondary"
+                                android:layout_gravity="center"
+                                android:id="@+id/home_name2"
+
+
+                                />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="0dp"
+                            android:background="#FFD6AD"
+                            android:layout_weight="0.5"
+                            >
+
+                            <TextView
+                                android:layout_marginTop="20dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="38.9k"
+                                android:textAppearance="?attr/textAppearanceBody2"
+                                android:textColor="?android:attr/textColorSecondary"
+                                android:layout_gravity="center"
+                                android:textStyle="bold"
+                                android:id="@+id/home_count3"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="San Miguel"
+                                android:textAppearance="?attr/textAppearanceBody2"
+                                android:textColor="?android:attr/textColorSecondary"
+                                android:layout_gravity="center"
+                                android:id="@+id/home_name3"
+
+                                />
+                        </LinearLayout>
+
                     </LinearLayout>
+
 
                 </LinearLayout>
 
 
             </LinearLayout>
 
+            <TextView
 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Recientes"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="8dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"
+                >
+            </TextView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listCompactRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
 
-        <TextView
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Recientes"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:layout_marginLeft="8dp"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp"
-            >
-        </TextView>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listCompactRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+    </ScrollView>
 </FrameLayout>

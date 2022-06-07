@@ -1,13 +1,29 @@
 package sv.edu.catolica.project_final;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import sv.edu.catolica.project_final.Interfaces.TradesSeekerApi;
+import sv.edu.catolica.project_final.Models.WorkModel;
 import sv.edu.catolica.project_final.Models.WorkerModel;
 
 public class ProfileWorker extends AppCompatActivity {
@@ -40,6 +56,9 @@ public class ProfileWorker extends AppCompatActivity {
         category.setText(listWorker.getWork().getCategory().getName());
         exp.setText(listWorker.getWork().getExperience());
         schedule.setText(listWorker.getWork().getSchedule());
+
+
+
     }
 
     public void onPop(View view) {

@@ -11,12 +11,14 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,6 +30,7 @@ import sv.edu.catolica.project_final.Models.Departamento;
 import sv.edu.catolica.project_final.Models.LoginModel;
 import sv.edu.catolica.project_final.Models.LoginResponseModel;
 import sv.edu.catolica.project_final.Models.WorkModel;
+import sv.edu.catolica.project_final.Models.WorkResponseModel;
 import sv.edu.catolica.project_final.Models.WorkStoreModel;
 import sv.edu.catolica.project_final.Models.WorkerModel;
 
@@ -35,6 +38,7 @@ public class PublicarTrabajo extends AppCompatActivity {
 
 
     AutoCompleteTextView autoCompleteDepartamento;
+    AutoCompleteTextView categoryInput;
     ArrayAdapter<String> adapterDepartamentos;
     String[] list_departamentos = {"Ahuachapán","Cabañas","Chalatenango","Cuscatlán","La Libertad","Morazán", "La Paz","Santa Ana", "San Miguel","San Salvador","San Vicente","Sonsonate","La Unión","Usulután"};
 
@@ -50,6 +54,10 @@ public class PublicarTrabajo extends AppCompatActivity {
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
+    int selectedCategory;
+    int selectedState;
+    String selectedSchedule;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +72,7 @@ public class PublicarTrabajo extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                 String item = parent.getItemAtPosition(i).toString();
+                selectedState = i + 1;
             }
         });
 
@@ -76,8 +85,11 @@ public class PublicarTrabajo extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                 String item = parent.getItemAtPosition(i).toString();
+                selectedSchedule = item;
             }
         });
+
+        categoryInput = findViewById(R.id.list_categoria);
 
         TradesSeekerApi tradesSeekerApi = retrofit.create(TradesSeekerApi.class);
         Call<List<CategoryModel>> call = tradesSeekerApi.getCategories();
@@ -87,7 +99,7 @@ public class PublicarTrabajo extends AppCompatActivity {
             public void onResponse(Call<List<CategoryModel>> call, Response<List<CategoryModel>> response) {
                 System.out.println(response.code());
                 if (response.isSuccessful()){
-                    AutoCompleteTextView categoryInput = findViewById(R.id.list_categoria);
+
 
                     List<CategoryModel> categoryModel = response.body();
 
@@ -106,6 +118,13 @@ public class PublicarTrabajo extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<CategoryModel>> call, Throwable t) {
                 System.out.println("Error "+ t.getMessage());
+            }
+        });
+
+        categoryInput.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
+                selectedCategory = i + 1 ;
             }
         });
     }
@@ -136,65 +155,29 @@ public class PublicarTrabajo extends AppCompatActivity {
 
         WorkerModel worker = gson.fromJson(json, WorkerModel.class);
 
-        WorkStoreModel workStoreModel = new WorkStoreModel(worker.getId(), location.getListSelection(), cat.getListSelection(), profession.getText().toString(), exp.getText().toString(), shedule.getText().toString(), price.getText().toString(), info.getText().toString() );
+        WorkStoreModel workStoreModel = new WorkStoreModel(worker.getId(),selectedState, selectedCategory, profession.getText().toString(), exp.getText().toString(), selectedSchedule, price.getText().toString(), info.getText().toString() );
 
-        Call<String> call = tradesSeekerApi.saveWorks("Bearer "+token, workStoreModel);
+        Call<ResponseBody> call = tradesSeekerApi.saveWorks(workStoreModel);
 
-        call.enqueue(new Callback<String>(){
+        call.enqueue(new Callback<ResponseBody>(){
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                System.out.println(response.message());
-                System.out.println(response.headers());
-                System.out.println(response.body());
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
-                    /*Gson gson = new Gson();
+                    System.out.println(response.body());
 
-                    Intent myIntent = new Intent(getBaseContext(), MainActivity.class);
-                    startActivity(myIntent);*/
+                    Snackbar.make(view, "Trabajo publicado", Snackbar.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Trabajo publicado", Toast.LENGTH_LONG).show();
+
+                    onBackPressed();
                 }
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 System.out.println("Error codigo: "+t.getMessage());
             }
         });
     }
-
-
-//
-//    public void setDataDeparment() {
-//        ArrayList<Departamento> departamentoArrayList = new ArrayList<>();
-//
-//        departamentoArrayList.add(new Departamento("1","Ahuachapán"));
-//        departamentoArrayList.add(new Departamento("2","Cabañas"));
-//        departamentoArrayList.add(new Departamento("3","Chalatenango"));
-//        departamentoArrayList.add(new Departamento("4","Cuscatlán"));
-//        departamentoArrayList.add(new Departamento("5","La Libertad"));
-//        departamentoArrayList.add(new Departamento("6","La Paz"));
-//        departamentoArrayList.add(new Departamento("7","La Unión"));
-//        departamentoArrayList.add(new Departamento("8","Morazán"));
-//        departamentoArrayList.add(new Departamento("9","San Miguel"));
-//        departamentoArrayList.add(new Departamento("10","San Salvador"));
-//        departamentoArrayList.add(new Departamento("11","San Vicente"));
-//        departamentoArrayList.add(new Departamento("12","Santa Ana"));
-//        departamentoArrayList.add(new Departamento("13","Sonsonate"));
-//        departamentoArrayList.add(new Departamento("14","Usulután"));
-//
-//        autoCompleteDepartamento = findViewById(R.id.list_department);
-//        ArrayAdapter<Departamento> departamentoArrayAdapter = new ArrayAdapter<Departamento>(getBaseContext(), com.google.android.material.R.layout.support_simple_spinner_dropdown_item, departamentoArrayList);
-//
-//        autoCompleteDepartamento.setAdapter(departamentoArrayAdapter);
-//
-//        autoCompleteDepartamento.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
-//                Departamento item = (Departamento) parent.getSelectedItem();
-//                Toast.makeText(getBaseContext(), "Departamento: " + item.getName(), Toast.LENGTH_LONG).show();
-//            }
-//        });
-//
-//    }
 
 
 }

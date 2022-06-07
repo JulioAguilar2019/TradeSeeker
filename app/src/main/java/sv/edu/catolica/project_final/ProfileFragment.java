@@ -1,5 +1,6 @@
 package sv.edu.catolica.project_final;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
@@ -11,11 +12,24 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.gson.Gson;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import sv.edu.catolica.project_final.Interfaces.TradesSeekerApi;
+import sv.edu.catolica.project_final.Models.WorkStoreModel;
+import sv.edu.catolica.project_final.Models.WorkerModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,6 +56,11 @@ public class ProfileFragment extends Fragment {
     AutoCompleteTextView autoCompleteDepartamento;
     ArrayAdapter<String> adapterDepartamentos;
     ArrayAdapter<String> adaptarGenders;
+
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl("https://trades-seeker.herokuapp.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -82,7 +101,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_profile, container, false);
-        textDate = root.findViewById(R.id.BornDate);
+        textDate = root.findViewById(R.id.setting_BornDate);
 
         autoCompleteDepartamento = root.findViewById(R.id.list_department);
         adapterDepartamentos = new ArrayAdapter<String>(container.getContext(),R.layout.genero_list, list_departamentos);
@@ -107,12 +126,66 @@ public class ProfileFragment extends Fragment {
                 String item = parent.getItemAtPosition(i).toString();
             }
         });
+
+        try {
+            TextInputEditText setting_txtname = root.findViewById(R.id.setting_txtname);
+            TextView setting_nombre = root.findViewById(R.id.setting_nombre);
+            TextView setting_Ubicacion = root.findViewById(R.id.setting_Ubicacion);
+            TextInputEditText setting_email = root.findViewById(R.id.setting_email);
+            TextInputEditText setting_phone = root.findViewById(R.id.setting_phone);
+
+            Gson gson = new Gson();
+
+            SharedPreferences sharedPref = getContext().getSharedPreferences("myPreferences", getContext().MODE_PRIVATE);
+            String json = sharedPref.getString("user", "");
+
+            WorkerModel worker = gson.fromJson(json, WorkerModel.class);
+
+            if (worker != null){
+                setting_txtname.setText(worker.getName());
+                setting_nombre.setText(worker.getName());
+                setting_Ubicacion.setText(worker.getProfession());
+                textDate.setText(worker.getBirthday().toString());
+                setting_email.setText(worker.getEmail());
+                setting_phone.setText(worker.getPhone());
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
         // Inflate the layout for this fragment
         return root;
 
     }
 
 
+    public void logout(View view) {
+        TradesSeekerApi tradesSeekerApi = retrofit.create(TradesSeekerApi.class);
 
+        SharedPreferences sharedPref = getContext().getSharedPreferences("myPreferences", getContext().MODE_PRIVATE);
 
+        String token = sharedPref.getString("token", null);
+        String json = sharedPref.getString("user", "");
+
+        Gson gson = new Gson();
+
+        WorkerModel worker = gson.fromJson(json, WorkerModel.class);
+
+        Call<ResponseBody> call = tradesSeekerApi.logout(token);
+
+        call.enqueue(new Callback<ResponseBody>(){
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                System.out.println(response.message());
+                if (response.isSuccessful()){
+                    System.out.println(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                System.out.println("Error codigo: "+t.getMessage());
+            }
+        });
+    }
 }
