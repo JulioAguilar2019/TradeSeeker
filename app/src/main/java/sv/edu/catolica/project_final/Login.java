@@ -89,4 +89,9 @@ public class Login extends AppCompatActivity {
             System.out.println("Error "+e.getMessage());
         }
     }
+
+    public void goRegister(View view) {
+        Intent myIntent = new Intent(getBaseContext(), register.class);
+        startActivity(myIntent);
+    }
 }

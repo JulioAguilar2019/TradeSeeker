@@ -111,6 +111,7 @@
         android:layout_marginHorizontal="100dp"
         android:layout_marginVertical="20dp"
         android:onClick="onLogin"
+        android:backgroundTint="#FF9228"
         />
 
     <LinearLayout
@@ -138,8 +139,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
-
-            android:text="Registrate aqui" />
+            android:textColor="#FF9228"
+            android:text="Registrate aqui"
+            android:onClick="goRegister"
+            />
     </LinearLayout>
 
 </LinearLayout>

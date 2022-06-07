@@ -36,7 +36,7 @@ public class ProfileFragment extends Fragment {
     public TextInputEditText textDate;
     private View root;
     String[] list_genders = {"Masculino", "Femenino"};
-    String[] list_departamentos = {"Ahuachapán","Cabañas","Chalatenango","Cuscatlán","La Libertad","La Paz","La Unión","Morazán", "San Miguel","San Salvador","San Vicente","Santa Ana","Sonsonate","Usulután"};
+    String[] list_departamentos = {"Ahuachapán","Cabañas","Chalatenango","Cuscatlán","La Libertad","Morazán", "La Paz","Santa Ana", "San Miguel","San Salvador","San Vicente","Sonsonate","La Unión","Usulután"};
 
     AutoCompleteTextView autoCompleteGenders;
     AutoCompleteTextView autoCompleteDepartamento;
