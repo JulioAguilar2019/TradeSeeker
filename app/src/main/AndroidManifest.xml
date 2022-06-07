@@ -11,11 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectFinal">
-
+        <activity
+            android:name=".PublicarTrabajo"
+            android:exported="false" />
         <activity
             android:name=".ProfileWorker"
             android:exported="false" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".register"
             android:exported="false" />
@@ -29,7 +31,5 @@
             </intent-filter>
         </activity>
     </application>
-
-
 
 </manifest>

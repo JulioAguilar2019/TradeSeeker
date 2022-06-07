@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="¿Qué te gustaría agregar?"
+        android:text="¡Ofrece tus servicios!"
         android:layout_marginTop="30dp"
         android:textSize="25dp"
         android:textColor="@color/black"
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="¿Te gustaría agregar un trabajo \n o brindar tus servicios?"
+        android:text="Acá puedes publicar lo que sabes hacer"
         android:layout_marginTop="10dp"
         android:textSize="15dp"
         android:textColor="@color/black"
@@ -42,19 +42,6 @@
             android:layout_marginRight="30dp"
             android:layout_marginTop="20dp"
             android:backgroundTint="#130160"
-            >
-
-        </Button>
-
-        <Button
-            android:id="@+id/btnBuscar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ofrecer servicios"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="#D6CDFE"
             >
 
         </Button>

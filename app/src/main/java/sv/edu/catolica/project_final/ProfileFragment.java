@@ -93,7 +93,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                 String item = parent.getItemAtPosition(i).toString();
-                Toast.makeText(container.getContext(), "Departamento: " + item, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -106,7 +105,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                 String item = parent.getItemAtPosition(i).toString();
-                Toast.makeText(container.getContext(), "Genero: " + item, Toast.LENGTH_LONG).show();
             }
         });
         // Inflate the layout for this fragment

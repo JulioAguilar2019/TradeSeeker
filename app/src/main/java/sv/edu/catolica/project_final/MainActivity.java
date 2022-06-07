@@ -72,21 +72,16 @@ public class MainActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.bottomsheetadd);
 
         Button btnPubli = dialog.findViewById(R.id.btnPublicar);
-        Button btnBus = dialog.findViewById(R.id.btnBuscar);
+
 
         btnPubli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragment(new ProfileFragment());
+                Intent myIntent = new Intent(getBaseContext(), PublicarTrabajo.class);
+                startActivity(myIntent);
             }
         });
 
-        btnBus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                replaceFragment(new SaveFragment());
-            }
-        });
 
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
