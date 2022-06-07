@@ -7,7 +7,10 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 import sv.edu.catolica.project_final.Models.CategoryModel;
+import sv.edu.catolica.project_final.Models.HomeModel;
 import sv.edu.catolica.project_final.Models.LoginModel;
 import sv.edu.catolica.project_final.Models.LoginResponseModel;
 import sv.edu.catolica.project_final.Models.WorkModel;
@@ -17,6 +20,12 @@ public interface TradesSeekerApi {
 
     @GET("api/works")
     Call<List<WorkModel>> getWorks();
+
+    @GET("api/home")
+    Call<HomeModel> getHome();
+
+    @GET("api/getWorks/{id}")
+    Call<List<WorkModel>> getMyWorks(@Path("id") int id);
 
     @GET("api/get-categories")
     Call<List<CategoryModel>> getCategories();

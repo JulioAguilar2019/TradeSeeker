@@ -38,7 +38,7 @@
                 android:id="@+id/profileImg"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/profile2"
+                android:src="@drawable/profile"
                 android:elevation="2dp"
                 android:layout_marginLeft="10dp"
                 android:layout_gravity="center_vertical"
@@ -60,7 +60,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="8dp">
+            android:layout_margin="8dp"
+            android:layout_gravity="center_horizontal">
 
 
 
@@ -68,7 +69,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                >
 
                 <!-- Media -->
 
@@ -101,6 +103,7 @@
                         android:textColor="?android:attr/textColorSecondary"
                         android:layout_gravity="center"
                         android:textStyle="bold"
+                        android:id="@+id/home_count1"
                         />
                     <TextView
                         android:layout_width="wrap_content"
@@ -110,6 +113,7 @@
                         android:textColor="?android:attr/textColorSecondary"
                         android:layout_gravity="center"
                         android:layout_marginBottom="20dp"
+                        android:id="@+id/home_name1"
                         />
 
 
@@ -117,17 +121,17 @@
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="0dp"
                     >
 
                     <LinearLayout
                         android:layout_width="150dp"
-                        android:layout_height="70dp"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:background="#BEAFFE"
-                        android:layout_weight="1"
+                        android:layout_weight="0.5"
 
                         >
 
@@ -140,6 +144,7 @@
                             android:layout_gravity="center"
                             android:textStyle="bold"
                             android:layout_marginTop="20dp"
+                            android:id="@+id/home_count2"
                             />
                         <TextView
                             android:layout_width="wrap_content"
@@ -148,6 +153,7 @@
                             android:textAppearance="?attr/textAppearanceBody2"
                             android:textColor="?android:attr/textColorSecondary"
                             android:layout_gravity="center"
+                            android:id="@+id/home_name2"
 
 
                             />
@@ -155,11 +161,11 @@
 
                     <LinearLayout
                         android:layout_width="150dp"
-                        android:layout_height="70dp"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginTop="60dp"
+                        android:layout_marginTop="0dp"
                         android:background="#FFD6AD"
-                        android:layout_weight="1"
+                        android:layout_weight="0.5"
                         >
 
                         <TextView
@@ -171,6 +177,7 @@
                             android:textColor="?android:attr/textColorSecondary"
                             android:layout_gravity="center"
                             android:textStyle="bold"
+                            android:id="@+id/home_count3"
                             />
                         <TextView
                             android:layout_width="wrap_content"
@@ -179,6 +186,7 @@
                             android:textAppearance="?attr/textAppearanceBody2"
                             android:textColor="?android:attr/textColorSecondary"
                             android:layout_gravity="center"
+                            android:id="@+id/home_name3"
 
                             />
                     </LinearLayout>
@@ -203,244 +211,10 @@
             android:layout_marginBottom="8dp"
             >
         </TextView>
-        <HorizontalScrollView
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listCompactRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/cv2"
-                    android:animateLayoutChanges="true"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="6dp"
-                    android:layout_margin="8dp"
-                    app:cardUseCompatPadding="true">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingVertical="10dp"
-                        android:paddingHorizontal="5dp"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:paddingHorizontal="14dp">
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                xmlns:app="http://schemas.android.com/apk/res-auto"
-                                android:id="@+id/profile_image"
-                                android:layout_width="46dp"
-                                android:layout_height="46dp"
-                                android:src="@drawable/profile2"
-                                android:elevation="2dp"
-                                />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:layout_marginLeft="10dp"
-                                >
-                                <TextView
-                                    android:id="@+id/nombre"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Nombre"
-                                    android:textAppearance="?attr/textAppearanceHeadline6"
-                                    android:textColor="@color/primaryColor"
-
-                                    />
-                                <TextView
-                                    android:id="@+id/information"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="8dp"
-                                    android:text="freelancer - Santa Ana"
-                                    android:textAppearance="?attr/textAppearanceBody2"
-                                    android:textColor="@color/lightTextColor"
-                                    />
-
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"/>
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:src="@drawable/ic_bookmark"
-                                android:layout_gravity="right"
-                                android:onClick="SaveJob"
-                                />
-
-                        </LinearLayout>
-
-
-h
-                        <!-- Buttons -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-
-                            android:orientation="horizontal"
-
-                            >
-
-                            <com.google.android.material.chip.Chip
-                                android:id="@+id/chip"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="20dp"
-                                android:textColor="@color/lightTextColor"
-                                app:chipBackgroundColor="#f9f9fa"
-                                android:text="5 años"/>
-
-                            <com.google.android.material.chip.Chip
-                                android:id="@+id/chip21"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="20dp"
-                                android:textColor="@color/lightTextColor"
-                                app:chipBackgroundColor="#f9f9fa"
-                                android:text="Tiempo completo"/>
-                            <Button
-                                android:id="@+id/btnApply"
-                                android:layout_width="match_parent"
-                                android:layout_height="50dp"
-                                android:text="Aplicar"
-                                android:textColor="#130160"
-                                style="?attr/materialButtonOutlinedStyle"></Button>
-                        </LinearLayout>
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/cv23"
-                    android:animateLayoutChanges="true"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="6dp"
-                    android:layout_margin="8dp"
-                    app:cardUseCompatPadding="true">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingVertical="10dp"
-                        android:paddingHorizontal="5dp"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:paddingHorizontal="14dp">
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                xmlns:app="http://schemas.android.com/apk/res-auto"
-                                android:id="@+id/profile_image2"
-                                android:layout_width="46dp"
-                                android:layout_height="46dp"
-                                android:src="@drawable/profile2"
-                                android:elevation="2dp"
-                                />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                >
-                                <TextView
-                                    android:id="@+id/nombre2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Nombre"
-                                    android:textAppearance="?attr/textAppearanceHeadline6"
-                                    android:textColor="@color/primaryColor"
-                                    />
-                                <TextView
-                                    android:id="@+id/information2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="8dp"
-                                    android:text="freelancer - Santa Ana"
-                                    android:textAppearance="?attr/textAppearanceBody2"
-                                    android:textColor="@color/lightTextColor"
-                                    />
-
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"/>
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:src="@drawable/ic_bookmark"
-                                android:layout_gravity="right"/>
-
-                        </LinearLayout>
-
-
-
-                        <!-- Buttons -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-
-                            android:orientation="horizontal"
-
-                            >
-
-                            <com.google.android.material.chip.Chip
-                                android:id="@+id/chip2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="20dp"
-                                android:textColor="@color/lightTextColor"
-                                app:chipBackgroundColor="#f9f9fa"
-                                android:text="5 años"/>
-
-                            <com.google.android.material.chip.Chip
-                                android:id="@+id/chip23"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="20dp"
-                                android:textColor="@color/lightTextColor"
-                                app:chipBackgroundColor="#f9f9fa"
-                                android:text="Tiempo completo"/>
-                            <Button
-                                android:id="@+id/btnApply2"
-                                android:layout_width="match_parent"
-                                android:layout_height="50dp"
-                                android:text="Aplicar"
-                                android:textColor="#130160"
-                                style="?attr/materialButtonOutlinedStyle"></Button>
-                        </LinearLayout>
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-
-            </LinearLayout>
-
-
-        </HorizontalScrollView>
+            android:layout_height="match_parent" />
     </LinearLayout>
 </FrameLayout>

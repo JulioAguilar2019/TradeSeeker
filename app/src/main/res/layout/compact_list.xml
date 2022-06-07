@@ -6,7 +6,7 @@
     android:id="@+id/cv"
     android:animateLayoutChanges="true"
     app:cardCornerRadius="10dp"
-    app:cardElevation="6dp"
+    app:cardElevation="3dp"
     android:layout_margin="8dp"
     app:cardUseCompatPadding="true"
     android:clickable="true">
@@ -33,6 +33,33 @@
                 android:elevation="2dp"
                 />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp"
+                >
+                <TextView
+                    android:id="@+id/compact_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="@color/primaryColor"
+
+                    />
+                <TextView
+                    android:id="@+id/compact_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="freelancer - Santa Ana"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="@color/lightTextColor"
+                    />
+
+            </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -42,43 +69,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_bookmark"
-                android:layout_gravity="right"/>
+                android:layout_gravity="right"
+                android:onClick="SaveJob"
+                />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
 
-            <!-- Title, secondary and supporting text -->
-            <TextView
-                android:id="@+id/nombre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nombre"
-                android:textAppearance="?attr/textAppearanceHeadline6"
-                android:textColor="@color/primaryColor"
-                />
-            <TextView
-                android:id="@+id/information"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="freelancer - Santa Ana"
-                android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="@color/lightTextColor"
-                />
-        </LinearLayout>
 
         <!-- Buttons -->
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
+
+            >
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/compact_years"
@@ -108,7 +114,6 @@
                 app:chipBackgroundColor="#f9f9fa"
                 android:text="$20"/>
         </LinearLayout>
-
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

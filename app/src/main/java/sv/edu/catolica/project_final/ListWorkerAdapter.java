@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.chip.Chip;
+
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
@@ -57,7 +59,8 @@ public class ListWorkerAdapter extends RecyclerView.Adapter<ListWorkerAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView iconImage;
-        TextView name, info, money, date;
+        TextView name, info;
+        Chip years, shedule, compact_price;
 
         ViewHolder(View itemView){
             super(itemView);
@@ -65,15 +68,17 @@ public class ListWorkerAdapter extends RecyclerView.Adapter<ListWorkerAdapter.Vi
             iconImage = itemView.findViewById(R.id.profile_image);
             name = itemView.findViewById(R.id.nombre);
             info = itemView.findViewById(R.id.information);
-            money = itemView.findViewById(R.id.money);
-            date = itemView.findViewById(R.id.date);
+            years = itemView.findViewById(R.id.compact_years);
+            shedule = itemView.findViewById(R.id.compact_shedule);
+            compact_price = itemView.findViewById(R.id.compact_price);
         }
 
         void bindData(final ListWorker item){
             name.setText(item.worker.getName());
             info.setText(item.getWork().getProfession() + " - " + item.getWork().getState().getName());
-            money.setText(item.getWork().getPrice());
-            date.setText("5 dias atras");
+            years.setText(item.getWork().getExperience());
+            shedule.setText(item.getWork().getSchedule());
+            compact_price.setText("$ "+item.getWork().getPrice());
         }
     }
 }

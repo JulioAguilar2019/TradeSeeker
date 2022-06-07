@@ -94,9 +94,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:id="@+id/profile_description"
-                android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
-                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"/>
-
+                android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." />
+            LabelMedium
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -157,6 +156,36 @@
                 android:id="@+id/profile_category"
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="Años de experiencia"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="2"
+                android:id="@+id/profile_exp"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="Disponibilidad"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="Tiempo completo"
+                android:id="@+id/profile_schedule"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -164,8 +193,9 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Contratar"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+                    android:layout_marginHorizontal="20dp"
+                    android:text="Contactar"
+                    android:onClick="onPhoneCall"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

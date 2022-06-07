@@ -1,12 +1,32 @@
 package sv.edu.catolica.project_final;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.gson.Gson;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import sv.edu.catolica.project_final.Interfaces.TradesSeekerApi;
+import sv.edu.catolica.project_final.Models.HomeModel;
+import sv.edu.catolica.project_final.Models.WorkModel;
+import sv.edu.catolica.project_final.Models.WorkerModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +43,7 @@ public class SaveFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    View root;
 
     public SaveFragment() {
         // Required empty public constructor
@@ -58,7 +79,66 @@ public class SaveFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        root = inflater.inflate(R.layout.fragment_save, container, false);
+
+        Gson gson = new Gson();
+
+        SharedPreferences sharedPref = getContext().getSharedPreferences("myPreferences", getContext().MODE_PRIVATE);
+        String json = sharedPref.getString("user", "");
+
+        WorkerModel worker = gson.fromJson(json, WorkerModel.class);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://trades-seeker.herokuapp.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        TradesSeekerApi tradesSeekerApi = retrofit.create(TradesSeekerApi.class);
+
+        Call<List<WorkModel>> call = tradesSeekerApi.getMyWorks(worker.getId());
+
+        call.enqueue(new Callback<List<WorkModel>>() {
+            @Override
+            public void onResponse(Call<List<WorkModel>> call, Response<List<WorkModel>> response) {
+                if (!response.isSuccessful()){
+                    System.out.println("Error codigo: "+response.code());
+                    return;
+                }
+
+                List<WorkModel> workModels = response.body();
+
+                List<ListWorker> listWorkers = new ArrayList<>();
+
+                for (WorkModel work: workModels){
+                    listWorkers.add(new ListWorker(work, work.getWorker()));
+                }
+
+                ListWorkerAdapter listWorkerAdapter = new ListWorkerAdapter(listWorkers, root.getContext());
+
+                RecyclerView recyclerView = root.findViewById(R.id.listSaveRecyclerView);
+                recyclerView.setHasFixedSize(true);
+                recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
+
+                listWorkerAdapter.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent myIntent = new Intent(getContext(), ProfileWorker.class);
+                        myIntent.putExtra("listwork", (Serializable) listWorkers.get(recyclerView.getChildAdapterPosition(view)));
+                        startActivity(myIntent);
+                    }
+                });
+
+                recyclerView.setAdapter(listWorkerAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<WorkModel>> call, Throwable t) {
+
+            }
+        });
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_save, container, false);
+        return root;
     }
 }

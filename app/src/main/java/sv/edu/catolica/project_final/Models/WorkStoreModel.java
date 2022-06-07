@@ -1,6 +1,7 @@
 package sv.edu.catolica.project_final.Models;
 
 public class WorkStoreModel {
+    private int user_id;
     private int state_id;
     private int category_id;
     private String profession;
@@ -9,7 +10,8 @@ public class WorkStoreModel {
     private String price;
     private String description;
 
-    public WorkStoreModel(int state_id, int category_id, String profession, String experience, String schedule, String price, String description) {
+    public WorkStoreModel(int user_id, int state_id, int category_id, String profession, String experience, String schedule, String price, String description) {
+        this.user_id = user_id;
         this.state_id = state_id;
         this.category_id = category_id;
         this.profession = profession;
@@ -17,6 +19,14 @@ public class WorkStoreModel {
         this.schedule = schedule;
         this.price = price;
         this.description = description;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public int getState_id() {

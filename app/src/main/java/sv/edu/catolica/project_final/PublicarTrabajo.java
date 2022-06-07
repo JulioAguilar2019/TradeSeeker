@@ -29,6 +29,7 @@ import sv.edu.catolica.project_final.Models.LoginModel;
 import sv.edu.catolica.project_final.Models.LoginResponseModel;
 import sv.edu.catolica.project_final.Models.WorkModel;
 import sv.edu.catolica.project_final.Models.WorkStoreModel;
+import sv.edu.catolica.project_final.Models.WorkerModel;
 
 public class PublicarTrabajo extends AppCompatActivity {
 
@@ -129,8 +130,13 @@ public class PublicarTrabajo extends AppCompatActivity {
         SharedPreferences sharedPref = getBaseContext().getSharedPreferences("myPreferences", getBaseContext().MODE_PRIVATE);
 
         String token = sharedPref.getString("token", null);
+        String json = sharedPref.getString("user", "");
 
-        WorkStoreModel workStoreModel = new WorkStoreModel(location.getListSelection(), cat.getListSelection(), profession.getText().toString(), exp.getText().toString(), shedule.getText().toString(), price.getText().toString(), info.getText().toString() );
+        Gson gson = new Gson();
+
+        WorkerModel worker = gson.fromJson(json, WorkerModel.class);
+
+        WorkStoreModel workStoreModel = new WorkStoreModel(worker.getId(), location.getListSelection(), cat.getListSelection(), profession.getText().toString(), exp.getText().toString(), shedule.getText().toString(), price.getText().toString(), info.getText().toString() );
 
         Call<String> call = tradesSeekerApi.saveWorks("Bearer "+token, workStoreModel);
 
