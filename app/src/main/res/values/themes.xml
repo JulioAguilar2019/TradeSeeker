@@ -22,4 +22,9 @@
         <item name="android:windowEnterAnimation" tools:ignore="DuplicateDefinition">@anim/slide_in_top</item>
         <item name="android:windowEnterAnimation" tools:ignore="DuplicateDefinition">@anim/slide_out_top</item>
     </style>
+
+    <style name="Splash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splasscreen</item>
+
+    </style>
 </resources>
