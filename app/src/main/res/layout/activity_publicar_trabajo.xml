@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:textColor="#FF9228"
             android:text="Publicar"
+            android:onClick="createWork"
             style="?attr/materialButtonOutlinedStyle"
             />
 
@@ -68,7 +69,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             >
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/name"
+                android:id="@+id/profession"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -107,6 +108,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:inputType="number"
+            android:hint="Precio"
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/price"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
