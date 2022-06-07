@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 
@@ -51,10 +52,15 @@ public class Login extends AppCompatActivity {
 
     public void onLogin(View view) {
         try {
+
+
             TextInputEditText email = this.findViewById(R.id.txtLoginEmail);
             TextInputEditText password = this.findViewById(R.id.txtLoginPassword);
             System.out.println(email.getText());
-
+            if (email == null || email.getText().toString().isEmpty() || password == null ||password.getText().toString().isEmpty()) {
+               Snackbar snackbar = Snackbar.make(view, "Los campos no pueden estar vacios", Snackbar.LENGTH_LONG);
+               snackbar.show();
+            }
             LoginModel login = new LoginModel(email.getText().toString(), password.getText().toString());
 
             LoginApi loginApi = retrofit.create(LoginApi.class);
@@ -86,6 +92,7 @@ public class Login extends AppCompatActivity {
                         Intent myIntent = new Intent(getBaseContext(), MainActivity.class);
                         startActivity(myIntent);
                     }
+
                 }
 
                 @Override

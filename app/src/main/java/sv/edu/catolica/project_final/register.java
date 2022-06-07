@@ -9,6 +9,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
+
 public class register extends AppCompatActivity {
 
     String[] list_genders = {"Masculino", "Femenino"};
@@ -52,5 +55,35 @@ public class register extends AppCompatActivity {
     public void goLogin(View view) {
         Intent myIntent = new Intent(getBaseContext(), Login.class);
         startActivity(myIntent);
+    }
+
+    public void onRegister(View view) {
+
+        TextInputEditText name = this.findViewById(R.id.name);
+        TextInputEditText email = this.findViewById(R.id.email);
+        TextInputEditText date = this.findViewById(R.id.birthday);
+        AutoCompleteTextView gender = this.findViewById(R.id.gender);
+        AutoCompleteTextView department = this.findViewById(R.id.state_id);
+        TextInputEditText password = this.findViewById(R.id.password);
+        TextInputEditText confirm_password = this.findViewById(R.id.password_confirmed);
+
+
+       try {
+            if (name.getText().toString().isEmpty() || name == null
+                    || email.getText().toString().isEmpty() || email == null
+                    || date.getText().toString().isEmpty() || date == null
+                    || gender == null || gender.getText().toString().isEmpty()
+                    || department.getText().toString().isEmpty() || department == null
+                    || password.getText().toString().isEmpty() || password == null
+                    || confirm_password.getText().toString().isEmpty() || confirm_password == null
+            ){
+                Snackbar snackbar = Snackbar.make(view, "Los campos no pueden estar vacios", Snackbar.LENGTH_SHORT);
+                snackbar.show();
+            }
+       }
+
+       catch (Exception e){
+
+       }
     }
 }
