@@ -193,11 +193,6 @@
                 android:text="Mis trabajos"
                 android:textAppearance="@style/TextAppearance.Material3.BodyLarge"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/listProfileRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginVertical="15dp"/>
 
 
             <LinearLayout

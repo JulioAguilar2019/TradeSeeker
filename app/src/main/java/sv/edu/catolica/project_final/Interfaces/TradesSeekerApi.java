@@ -37,4 +37,7 @@ public interface TradesSeekerApi {
 
     @POST("api/logout")
     Call<ResponseBody> logout (@Header("Authorization") String token);
+
+    @POST("api/findWorkers")
+    Call<List<WorkModel>> findWorkers (@Body String param);
 }

@@ -56,7 +56,7 @@ public class Login extends AppCompatActivity {
 
             TextInputEditText email = this.findViewById(R.id.txtLoginEmail);
             TextInputEditText password = this.findViewById(R.id.txtLoginPassword);
-            System.out.println(email.getText());
+
             if (email == null || email.getText().toString().isEmpty() || password == null ||password.getText().toString().isEmpty()) {
                Snackbar snackbar = Snackbar.make(view, "Los campos no pueden estar vacios", Snackbar.LENGTH_LONG);
                snackbar.show();
